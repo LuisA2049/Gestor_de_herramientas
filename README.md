@@ -13,3 +13,25 @@ El Gestor de Herramientas para Laboratorios es un proyecto desarrollado en C# ut
 - **Prestamos y Devoluciones:** El sistema facilita el proceso de préstamo de herramientas, permitiendo a los usuarios solicitar y registrar préstamos, así como gestionar las devoluciones de manera eficiente.
 
 - **Notificaciones:** El gestor notifica a los laboratoristas sobre devoluciones pendientes.
+  
+## Capturas del programa
+
+Algunas ventanas no se muestran correctamente durante la captura de video.
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/9abb8d1b-1b11-4f61-bc3c-548c4e34a476
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/0aabc77a-c893-4b1f-818e-7b3f99bd754f
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/2de61ba6-4732-4b45-babf-ce5447f18543
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/06d81f44-5311-4adc-b5b1-0a7b734b3cea
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/f4ca33c8-3a0c-4d72-b25e-4e418160ff89
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/f88dcfca-bad3-4115-b62d-7a861c3b15a9
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/292c7782-db1a-485e-b998-8a98882821b3
+
+https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/70c516f4-1a82-4432-a74b-890a080dcdfe
+
+
