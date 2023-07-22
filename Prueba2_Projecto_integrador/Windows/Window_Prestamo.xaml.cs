@@ -536,42 +536,67 @@ namespace Prueba2_Projecto_integrador
                         }
                         else
                         {
-                            comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_prestatario` " +
-                                       "(`prestatario_numControl`, `prestatario_nombre`, `prestatario_apellido`," +
-                                       " `prestatario_carrera`, `prestatario_semestre`, `prestatario_correo`, `prestatario_numero`) VALUES " +
-                                       "('" + int.Parse(txtNumControl.Text) + "', '" + txtNombre.Text + "', '" + txtApellido.Text + "', '" + cbCarrera.Text + "', '" + cbSemestre.Text + "', '" + txtCorreo.Text + "', '" + Double.Parse(txtNumeroCelular.Text) + "');";
+                            if (dgHerramientas_por_prestar.Items.Count > 0)
+                            {
+                                comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_prestatario` " +
+                                    "(`prestatario_numControl`, `prestatario_nombre`, `prestatario_apellido`," +
+                                    " `prestatario_carrera`, `prestatario_semestre`, `prestatario_correo`, `prestatario_numero`) VALUES " +
+                                    "('" + int.Parse(txtNumControl.Text) + "', '" + txtNombre.Text + "', '" + txtApellido.Text + "', '" + cbCarrera.Text + "', '" + cbSemestre.Text + "', '" + txtCorreo.Text + "', '" + Double.Parse(txtNumeroCelular.Text) + "');";
 
-                            ComandosSQL.ComandoNonquery(comando);
+                                ComandosSQL.ComandoNonquery(comando);
 
-                            comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_prestamos` " +
-                           "(`prestamos_id`, `prestamos_fecha_prestamo`, `prestamos_fecha_retorno`, `prestamos_comentarios`, `usuarios_id`, `prestatario_numControl`) VALUES " +
-                           "('" + int.Parse(txtNumero.Text) + "', '" + StrFormatoFechaDpPrestamo + "', '" + StrFormatoFechaDpRetorno + "', '" + txtComentario.Text + "', '" + Usuario.IntIdUsuario + "', '" + int.Parse(txtNumControl.Text) + "');";
+                                comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_prestamos` " +
+                               "(`prestamos_id`, `prestamos_fecha_prestamo`, `prestamos_fecha_retorno`, `prestamos_comentarios`, `usuarios_id`, `prestatario_numControl`) VALUES " +
+                               "('" + int.Parse(txtNumero.Text) + "', '" + StrFormatoFechaDpPrestamo + "', '" + StrFormatoFechaDpRetorno + "', '" + txtComentario.Text + "', '" + Usuario.IntIdUsuario + "', '" + int.Parse(txtNumControl.Text) + "');";
 
-                            ComandosSQL.ComandoNonquery(comando);
+                                ComandosSQL.ComandoNonquery(comando);
 
-                            string StrHerramientasPrestatario = ObtenerFilasDelDataGrid(dgHerramientas_por_prestar);
+                                string StrHerramientasPrestatario = ObtenerFilasDelDataGrid(dgHerramientas_por_prestar).Substring(1);
 
+                                comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_bitacora` (`bitacora_fecha`, `bitacora_operacion`) VALUES ('Fecha: " + DateTime.Now.ToString() + "', 'El usuario: " + Usuario.StrNombreUsuario + " realizo el prestamo: " + txtNumero.Text + " confirmo el prestamo de las herramienta(s)/objeto(s): " + StrHerramientasPrestatario + "' );";
 
-                            this.Close();
+                                ComandosSQL.ComandoNonquery(comando);
+
+                                this.Close();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("No dejar espacios en blanco.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
                         }
                     }
                     else
                     {
-                        string comando = "UPDATE `bd_prestamos_itspp`.`tabla_prestatario` SET `prestatario_numControl` = '" + DoubleNumeroDeControl + "'," +
-                            "`prestatario_nombre` = '" + txtNombre.Text + "', `prestatario_apellido` = '" + txtApellido.Text + "', " +
-                            "`prestatario_carrera` = '" + cbCarrera.Text + "', `prestatario_semestre` = '" + cbSemestre.Text + "', " +
-                            "`prestatario_correo` = '" + txtCorreo.Text + "', `prestatario_numero` = '" + double.Parse(txtNumeroCelular.Text) + "' " +
-                            "WHERE (`prestatario_numControl` = '" + IntNumConTemporal + "');";
+                        if (dgHerramientas_por_prestar.Items.Count > 0)
+                        {
+                            string comando = "UPDATE `bd_prestamos_itspp`.`tabla_prestatario` SET `prestatario_numControl` = '" + DoubleNumeroDeControl + "'," +
+                           "`prestatario_nombre` = '" + txtNombre.Text + "', `prestatario_apellido` = '" + txtApellido.Text + "', " +
+                           "`prestatario_carrera` = '" + cbCarrera.Text + "', `prestatario_semestre` = '" + cbSemestre.Text + "', " +
+                           "`prestatario_correo` = '" + txtCorreo.Text + "', `prestatario_numero` = '" + double.Parse(txtNumeroCelular.Text) + "' " +
+                           "WHERE (`prestatario_numControl` = '" + IntNumConTemporal + "');";
 
-                        ComandosSQL.ComandoNonquery(comando);
+                            ComandosSQL.ComandoNonquery(comando);
 
-                        comando = "UPDATE `bd_prestamos_itspp`.`tabla_prestamos` SET `prestamos_fecha_prestamo` = '" + StrFormatoFechaDpPrestamo + "'," +
-                            " `prestamos_fecha_retorno` = '" + StrFormatoFechaDpRetorno + "', `prestamos_comentarios` = '" + txtComentario.Text + "', " +
-                            "`usuarios_id` = '" + Usuario.IntIdUsuario + "', `prestatario_numControl` = '" + DoubleNumeroDeControl + "' WHERE (`prestamos_id` = '" + int.Parse(txtNumero.Text) + "');";
+                            comando = "UPDATE `bd_prestamos_itspp`.`tabla_prestamos` SET `prestamos_fecha_prestamo` = '" + StrFormatoFechaDpPrestamo + "'," +
+                                " `prestamos_fecha_retorno` = '" + StrFormatoFechaDpRetorno + "', `prestamos_comentarios` = '" + txtComentario.Text + "', " +
+                                "`usuarios_id` = '" + Usuario.IntIdUsuario + "', `prestatario_numControl` = '" + DoubleNumeroDeControl + "' WHERE (`prestamos_id` = '" + int.Parse(txtNumero.Text) + "');";
 
-                        ComandosSQL.ComandoNonquery(comando);
+                            ComandosSQL.ComandoNonquery(comando);
 
-                        this.Close();
+                            string StrHerramientasPrestatario = ObtenerFilasDelDataGrid(dgHerramientas_por_prestar).Substring(1);
+
+                            comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_bitacora` (`bitacora_fecha`, `bitacora_operacion`) VALUES ('Fecha: " + DateTime.Now.ToString() + "', 'El usuario: " + Usuario.StrNombreUsuario + " actulizo el prestamo: " + txtNumero.Text + " confirmo el prestamo de las siguientes herramienta(s)/objeto(s): " + StrHerramientasPrestatario + "' );";
+
+                            ComandosSQL.ComandoNonquery(comando);
+
+                            this.Close();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No dejar espacios en blanco.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }    
                     }
 
                 }

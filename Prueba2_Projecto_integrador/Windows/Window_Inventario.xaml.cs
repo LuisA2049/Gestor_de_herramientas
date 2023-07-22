@@ -120,12 +120,20 @@ namespace Prueba2_Projecto_integrador
 
                     ComandosSQL.ComandoNonquery(comando);
 
+                    comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_bitacora` (`bitacora_fecha`, `bitacora_operacion`) VALUES ('Fecha: " + DateTime.Now.ToString() + "', 'El usuario: " + Usuario.StrNombreUsuario + " edito la herramienta/objeto: " + txtNombre.Text +"' );";
+
+                    ComandosSQL.ComandoNonquery(comando);
+
                     this.Close();
                 }
                 else
                 {
                     comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_inventario` (`objeto_nombre`, `objeto_descripcion`, `objeto_cantidad`, `objeto_disponible`, `objeto_estado`, `lab_id`) " +
                         "VALUES ('" + txtNombre.Text + "', '" + txtDescripcion.Text + "', '" + int.Parse(txtCantidad.Text) + "', 'Disponible', '" + estado + "', '" + cbLaboratorio.SelectedValue + "');";
+
+                    ComandosSQL.ComandoNonquery(comando);
+
+                    comando = "INSERT INTO `bd_prestamos_itspp`.`tabla_bitacora` (`bitacora_fecha`, `bitacora_operacion`) VALUES ('Fecha: " + DateTime.Now.ToString() + "', 'El usuario: " + Usuario.StrNombreUsuario + " agrego la herramienta/objeto: " + txtNombre.Text + "' );";
 
                     ComandosSQL.ComandoNonquery(comando);
 
