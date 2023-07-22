@@ -10,4 +10,3 @@ Menú
 
 https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/d057b702-b33d-4c04-bc0a-645508cfb067
 
-# Detalles
