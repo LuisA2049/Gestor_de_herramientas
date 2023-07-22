@@ -34,4 +34,17 @@ https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/292c7782-db
 
 https://github.com/LuisA2049/Gestor_de_herramientas/assets/117886123/70c516f4-1a82-4432-a74b-890a080dcdfe
 
+## Base de Datos
+
+El Gestor de Herramientas para Laboratorios utiliza MySQL como base de datos para almacenar la información relacionada con el inventario y los préstamos de herramientas. Asegúrate de tener instalado MySQL Server y MySQL Workbench antes de continuar con la configuración.
+
+## Requisitos del Sistema
+
+- Windows 10 o superior
+- .NET 6.0 Runtime
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas!
+
 
