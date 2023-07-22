@@ -1,0 +1,219 @@
+﻿<Window x:Class="Prueba2_Projecto_integrador.Window_rptUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prueba2_Projecto_integrador"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="Transparent"
+        AllowsTransparency="True"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Window_Usuario"
+        Height="300"
+        Width="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Border CornerRadius="10"
+            BorderBrush="Gray"
+            BorderThickness=".5"
+            Margin="2 2 2 2"
+            Background="White">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+
+            <!--#region Titulo-->
+
+            <TextBlock Text="Reporte: Usuario"
+                       FontSize="30"
+                       HorizontalAlignment="Left"
+                       FontWeight="SemiBold"
+                       Foreground="#2A582F"
+                       Margin="15 7 0 0"
+                       Grid.Column="0" />
+
+            <!--#endregion Titulo-->
+
+
+            <Grid Grid.Row="1">
+
+                <!--#region cbTipo-->
+                
+                <ComboBox Width="200"
+                          Height="30"
+                          Name="cbTipo"
+                          BorderBrush="#FF7A2323"
+                          Margin="0 15 0 0"
+                          materialDesign:TextFieldAssist.UnderlineBrush="#FF7A2323"
+                          FontSize="17"
+                          Padding="0 0 0 0"
+                          Grid.Row="1"
+                          Text="Tipo"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Center"
+                          Foreground="Gray"
+                          IsEditable="True">
+                    <ComboBoxItem>Usuarios</ComboBoxItem>
+                </ComboBox>
+                
+                <!--#endregion cbTipo-->
+
+                <!--#region txtInicial-->
+                
+                <TextBlock Text="Fecha inicial"
+                           Name="txtInicial"
+                           FontSize="20"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Foreground="Gray"
+                           FontWeight="Regular"
+                           Margin="147 85 0 0"
+                           Grid.Row="1" />
+
+                <!--#endregion txtInicial-->
+                
+                <!--#region dpInicial-->
+                
+                <DatePicker Grid.Row="1"
+                            Height="30"
+                            Width="200"
+                            Name="dpInicial"
+                            SelectedDateFormat="Short"
+                            BorderBrush="#FF7A2323"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            DisplayDateStart="5/30/23"
+                            Margin="0 82 0 0"
+                            FontSize="20"
+                            GotFocus="dpInicial_GotFocus"
+                            SelectedDateChanged="dpInicial_SelectedDateChanged"
+                            Foreground="Gray"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#FF7A2323">
+
+                    <DatePicker.CalendarStyle>
+                        <Style TargetType="Calendar"
+                               BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                            <Style.Resources>
+                                <SolidColorBrush x:Key="PrimaryHueMidBrush"
+                                                 Color="#FF7A2323" />
+                            </Style.Resources>
+                        </Style>
+                    </DatePicker.CalendarStyle>
+
+                </DatePicker>
+
+                <!--#endregion dpInicial-->
+                
+                <!--#region txtFinal-->
+                
+                <TextBlock Text="Fecha final"
+                           Name="txtFinal"
+                           FontSize="20"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Foreground="Gray"
+                           FontWeight="Regular"
+                           Margin="147 153 0 0"
+                           Grid.Row="1" />
+
+                <!--#endregion txtFinal-->
+                
+                <!--#region dpFinal-->
+                
+                <DatePicker Grid.Row="1"
+                            Height="30"
+                            Width="200"
+                            Name="dpFinal"
+                            SelectedDateFormat="Short"
+                            BorderBrush="#FF7A2323"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            DisplayDateStart="5/30/23"
+                            Margin="0 150 0 0"
+                            FontSize="20"
+                            IsEnabled="False"
+                            Foreground="Gray"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#FF7A2323">
+
+                    <DatePicker.CalendarStyle>
+                        <Style TargetType="Calendar"
+                               BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                            <Style.Resources>
+                                <SolidColorBrush x:Key="PrimaryHueMidBrush"
+                                                 Color="#FF7A2323" />
+                            </Style.Resources>
+                        </Style>
+                    </DatePicker.CalendarStyle>
+
+                </DatePicker>
+
+                <!--#endregion dpFinal-->
+                
+            </Grid>
+
+            <!--#region botones-->
+
+            <!--#region btnCancelar -->
+
+            <Button Content="Cancelar"
+                    Height="35"
+                    Width="120"
+                    Background="#FF7A2323"
+                    BorderBrush="#FF7A2323"
+                    Foreground="White"
+                    FontSize="20"
+                    FontWeight="SemiBold"
+                    Name="btnCancelar"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0 0 130 0"
+                    Grid.Row="2"
+                    Click="btnCancelar_Click" />
+
+            <!--#endregion btnCancelar-->
+
+            <!--#region btnImprimir -->
+
+            <Button Content="Imprimir"
+                    Height="35"
+                    Width="110"
+                    Background="#4c15ab"
+                    BorderBrush="#4c15ab"
+                    Foreground="White"
+                    FontSize="20"
+                    Name="btnImprimir"
+                    FontWeight="SemiBold"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0 0 10 0"
+                    Grid.Row="2"
+                    Click="btnImprimir_Click" />
+
+            <!--#endregion btnImprimir-->
+
+            <!--#endregion botones-->
+
+            <!--#region dg-->
+            <!-- Este datagrid esta puesto para generar los reportes, no es visible.-->
+            <DataGrid x:Name="dg"
+                      ItemsSource="{Binding}"
+                      Visibility="Hidden" />
+
+            <!--#endregion dg-->
+            
+        </Grid>
+    </Border>
+
+</Window>

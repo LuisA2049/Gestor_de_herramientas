@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="Prueba2_Projecto_integrador.UserControl_Prestamo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Prueba2_Projecto_integrador"
+             mc:Ignorable="d"
+             Background="#f6f9f8"
+             d:DesignHeight="780"
+             d:DesignWidth="1280"
+             Loaded="UserControl_Loaded"
+             Name="ucPrestamo"
+             >
+
+
+    <Grid x:Name="gdPrestamo">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--#region datagrid-->
+
+        <Border Grid.Row="1">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+
+                <DataGrid x:Name="dgPrestamos"
+                          ItemsSource="{Binding}"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserResizeRows="False"
+                          CanUserReorderColumns="False"
+                          CanUserResizeColumns="True"
+                          CanUserSortColumns="True"
+                          IsReadOnly="True"
+                          ColumnWidth="auto"
+                          FontSize="15"
+                          SelectedCellsChanged="dgPrestamos_SelectedCellsChanged"
+                          LoadingRow="dgPrestamos_LoadingRow"
+                          Background="#f6f9f8">
+
+                    <DataGrid.Columns>
+                        
+                        <!--#region btnRegresar-->
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="Regresar" />
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Regresar"
+                                            Name="btnRegresar"
+                                            Background="#2A582F"
+                                            BorderBrush="#2A582F"
+                                            Foreground="White"
+                                            FontSize="15"
+                                            Click="btnRegresar_Click"
+                                            FontWeight="SemiBold" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!-- Columna con btnEditar -->
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="Editar" />
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Editar"
+                                            Name="btnEditar"
+                                            Background="#FF7A2323"
+                                            BorderBrush="#FF7A2323"
+                                            Foreground="White"
+                                            FontSize="15"
+                                            Click="btnEditar_Click"
+                                            FontWeight="SemiBold" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </ScrollViewer>
+        </Border>
+
+        <!--#endregion datagrid-->
+
+        <!--#region txtBuscar-->
+
+        <Border Grid.Row="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <materialDesign:PackIcon Kind="Search"
+                                         Grid.Column="0"
+                                         Margin="8 0 0 0"
+                                         Width="30"
+                                         Height="30"
+                                         Foreground="Gray" />
+
+                <TextBox x:Name="txtBuscar"
+                         Grid.Column="1"
+                         Text="Buscar"
+                         GotFocus="txtBuscar_GotFocus"
+                         LostFocus="txtBuscar_LostFocus"
+                         HorizontalAlignment="Left"
+                         Margin="0 0 80 0"
+                         Padding="0 0 0 0"
+                         FontSize="20"
+                         Height="30"
+                         Width="300"
+                         TextChanged="txtBuscar_TextChanged"
+                         Foreground="Gray"
+                         BorderBrush="#2A582F"
+                         CaretBrush="#2A582F"
+                         SelectionBrush="#2A582F"
+                         PreviewTextInput="txtBuscar_PreviewTextInput"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#2A582F" />
+            </Grid>
+        </Border>
+
+        <!--#endregion txtBuscar-->
+
+        <!--#region btnNuevoPrestamo-->
+
+        <Border Grid.Row="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
+            <StackPanel>
+                <Button x:Name="btn_NuevoPrestamo"
+                        Content="Nuevo prestamo"
+                        Height="35"
+                        Width="200"
+                        Background="#2A582F"
+                        BorderBrush="#2A582F"
+                        Foreground="White"
+                        FontSize="20"
+                        FontWeight="SemiBold"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="0 0 20 0"
+                        Click="btn_NuevoPrestamo_Click" />
+            </StackPanel>
+        </Border>
+
+        <!--#endregion btnNuevoPrestamo-->
+
+        
+
+    </Grid>
+</UserControl>

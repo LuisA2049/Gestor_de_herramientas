@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="Prueba2_Projecto_integrador.UserControl_Reportes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Prueba2_Projecto_integrador"
+             mc:Ignorable="d"
+             Background="#f6f9f8"
+             d:DesignHeight="700"
+             d:DesignWidth="1280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              VerticalAlignment="Center"
+              Margin="0 0 0 100">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region Prestamos -->
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <!--#region iconPrestamo-->
+                <materialDesign:PackIcon Kind="HandPalmOutline"
+                                         Foreground="#7a2323"
+                                         Background="#f6f9f8"
+                                         Margin="0 0 0 0"
+                                         VerticalAlignment="Bottom"
+                                         HorizontalAlignment="Center"
+                                         Height="150"
+                                         Width="150"
+                                         MouseLeftButtonDown="iconPrestamo_MouseLeftButtonDown"
+                                         MouseEnter="iconPrestamo_MouseEnter"
+                                         MouseLeave="iconPrestamo_MouseLeave"
+                                         Name="iconPrestamo" />
+
+                <!--#endregion iconPrestamo-->
+                
+                <!--#region txtPrestamo-->
+                <TextBlock Text="Prestamos"
+                           FontSize="35"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Foreground="#2A5822"
+                           FontWeight="Bold"
+                           Grid.Row="1"
+                           Margin="0 0 0 0" />
+
+                <!--#endregion txtPrestamo-->
+                
+            </Grid>
+
+            <!--#endregion Prestamos-->
+
+            <!--#region Inventario -->
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region iconInventario-->
+                
+                <materialDesign:PackIcon Kind="Warehouse"
+                                         Foreground="#7a2323"
+                                         Background="#f6f9f8"
+                                         Margin="0 0 0 0"
+                                         VerticalAlignment="Bottom"
+                                         HorizontalAlignment="Center"
+                                         Height="150"
+                                         Width="150"
+                                         MouseLeftButtonDown="iconInventario_MouseLeftButtonDown"
+                                         MouseEnter="iconInventario_MouseEnter"
+                                         MouseLeave="iconInventario_MouseLeave"
+                                         Name="iconInventario" />
+
+                <!--#endregion iconInvenario-->
+                
+                <!--#region txtInventario-->
+                
+                <TextBlock Text="Inventario"
+                           FontSize="35"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Foreground="#2A5822"
+                           FontWeight="Bold"
+                           Grid.Row="1"
+                           Margin="0 0 0 0" />
+
+                <!--#endregion txtInventario-->
+                
+            </Grid>
+
+            <!--#endregion Inventario-->
+
+            <!--#region Usuario -->
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region iconUsuario-->
+                
+                <materialDesign:PackIcon Kind="UserBox"
+                                         Foreground="#7a2323"
+                                         Background="#f6f9f8"
+                                         Margin="0 0 0 0"
+                                         VerticalAlignment="Bottom"
+                                         HorizontalAlignment="Center"
+                                         Height="150"
+                                         Width="150"
+                                         MouseLeftButtonDown="iconUsuario_MouseLeftButtonDown"
+                                         MouseEnter="iconUsuario_MouseEnter"
+                                         MouseLeave="iconUsuario_MouseLeave"
+                                         Name="iconUsuario" />
+
+                <!--#endregion iconUsuario-->
+                
+                <!--#region txtUsuario-->
+                <TextBlock Text="Usuario"
+                           FontSize="35"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Foreground="#2A5822"
+                           FontWeight="Bold"
+                           Grid.Row="1"
+                           Margin="0 0 0 0" />
+
+                <!--#endregion txtUsuario-->
+            </Grid>
+
+            <!--#endregion Usuario-->
+
+        </Grid>
+
+    </Grid>
+</UserControl>

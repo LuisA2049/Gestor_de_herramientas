@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="Prueba2_Projecto_integrador.UserControl_Bitacora"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Prueba2_Projecto_integrador"
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
+             Background="#f6f9f8"
+             d:DesignHeight="780"
+             d:DesignWidth="1280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="380" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <!--#region Inicial -->
+
+                <!--#region txtFechaInicial-->
+                
+                <TextBlock Text="Fecha inicial"
+                           Name="txtInicial"
+                           FontSize="20"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Foreground="Gray"
+                           FontWeight="Regular"
+                           Margin="20 0 0 0" />
+                
+                <!--#endregion txtFechaInicial-->
+                
+                <!--#region dpInicial-->
+                
+                <DatePicker Grid.Row="0"
+                            Height="30"
+                            Width="180"
+                            Name="dpInicial"
+                            SelectedDateFormat="Short"
+                            BorderBrush="#2A582F"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            DisplayDateStart="5/30/23"
+                            Margin="150 0 0 0"
+                            FontSize="20"
+                            Foreground="Gray"
+                            MouseEnter="dpInicial_MouseEnter"
+                            SelectedDateChanged="dpInicial_SelectedDateChanged"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#2A582F"
+                            >
+
+                    <DatePicker.CalendarStyle>
+                        <Style TargetType="Calendar"
+                               BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                            <Style.Resources>
+                                <SolidColorBrush x:Key="PrimaryHueMidBrush"
+                                                 Color="#2A582F" />
+                            </Style.Resources>
+                        </Style>
+
+                    </DatePicker.CalendarStyle>
+                       
+                </DatePicker>
+
+                <!--#endregion dpInicial-->
+                
+                <!--#endregion Inicial -->
+
+                <!--#region Final -->
+
+                <!--#region txtFechaprestamo-->
+                
+                <TextBlock Text="Fecha de pretamo"
+                           FontSize="20"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Foreground="Gray"
+                           FontWeight="Regular"
+                           Grid.Column="1"
+                           Margin="20 0 0 0" />
+                
+                <!--#endregion txtFechaprestamo-->
+
+                <!--#region dpFinal-->
+
+                <DatePicker Grid.Column="1"
+                            Height="30"
+                            Width="180"
+                            Name="dpFinal"
+                            SelectedDateFormat="Short"
+                            BorderBrush="#2A582F"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="200 0 0 0"
+                            FontSize="20"
+                            Foreground="Gray"
+                            IsEnabled="False"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#2A582F">
+
+                    <DatePicker.CalendarStyle>
+                        <Style TargetType="Calendar"
+                               BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                            <Style.Resources>
+                                <SolidColorBrush x:Key="PrimaryHueMidBrush"
+                                                 Color="#2A582F" />
+                            </Style.Resources>
+                        </Style>
+                    </DatePicker.CalendarStyle>
+                </DatePicker>
+
+                <!--#region dpFinal-->
+                
+                <!--#endregion Final -->
+
+                <!--#region botones-->
+
+                <!--#region btnBuscar -->
+
+                <Button Content="Buscar"
+                        Height="35"
+                        Width="100"
+                        Background="#2A582F"
+                        BorderBrush="#2A582F"
+                        Foreground="White"
+                        FontSize="20"
+                        FontWeight="SemiBold"
+                        Name="btnBuscar"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="20 0 0 0"
+                        Grid.Column="2"
+                        Click="btnBuscar_Click" />
+
+                <!--#endregion btnBuscar-->
+
+                <!--#region btnImprimir -->
+
+                <Button Content="Imprimir"
+                        Height="35"
+                        Width="110"
+                        Background="#4c15ab"
+                        BorderBrush="#4c15ab"
+                        Foreground="White"
+                        FontSize="20"
+                        Name="btnImprimir"
+                        FontWeight="SemiBold"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="180 0 0 0"
+                        Grid.Column="2"
+                        Click="btnImprimir_Click" />
+
+                <!--#endregion btnImprimir-->
+
+
+                <!--#endregion botones-->
+
+            </Grid>
+        </Border>
+
+        <!--#region datagrid-->
+        
+        <Border Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Visible">
+
+                <DataGrid x:Name="dgBitacora"
+                          ItemsSource="{Binding}"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserResizeRows="False"
+                          CanUserReorderColumns="False"
+                          CanUserResizeColumns="True"
+                          CanUserSortColumns="True"
+                          IsReadOnly="True"
+                          ColumnWidth="auto"
+                          FontSize="15"
+                          Background="#f6f9f8">
+
+                </DataGrid>
+            </ScrollViewer>
+        </Border>
+       
+        <!--#endregion datagrid-->
+
+    </Grid>
+
+</UserControl>

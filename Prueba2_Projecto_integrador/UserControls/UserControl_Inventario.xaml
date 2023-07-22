@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="Prueba2_Projecto_integrador.UserControl_Inventario"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Prueba2_Projecto_integrador"
+             mc:Ignorable="d"
+             Background="#f6f9f8"
+             d:DesignHeight="780"
+             Loaded="UserControl_Loaded"
+             d:DesignWidth="1280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--#region datagrid-->
+        <Border Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Visible">
+
+                <DataGrid x:Name="dgInventario"
+                          ItemsSource="{Binding}"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserResizeRows="False"
+                          CanUserReorderColumns="False"
+                          CanUserResizeColumns="True"
+                          CanUserSortColumns="True"
+                          IsReadOnly="True"
+                          ColumnWidth="auto"
+                          FontSize="15"
+                          SelectedCellsChanged="dg_SelectedCellsChanged"
+                          Background="#f6f9f8">
+
+                    <DataGrid.Columns>
+                        <!-- Columna con botón -->
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="Editar" />
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Editar"
+                                            Name="btnEditar"
+                                            Background="#FF7A2323"
+                                            BorderBrush="#FF7A2323"
+                                            Foreground="White"
+                                            FontSize="15"
+                                            Click="btnEditar_Click"
+                                            FontWeight="SemiBold" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Border>
+        <!--#endregion datagrid-->
+
+        <!--#region TxtBuscar-->
+
+        <Border Grid.Row="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <materialDesign:PackIcon Kind="Search"
+                                         Grid.Column="0"
+                                         Margin="8 0 0 0"
+                                         Width="30"
+                                         Height="30"
+                                         Foreground="Gray" />
+
+                <TextBox x:Name="txtBuscar"
+                         Grid.Column="1"
+                         Text="Buscar"
+                         GotFocus="txtBuscar_GotFocus"
+                         LostFocus="txtBuscar_LostFocus"
+                         HorizontalAlignment="Left"
+                         Margin="0 0 80 0"
+                         Padding="0 0 0 0"
+                         FontSize="20"
+                         Height="30"
+                         Width="300"
+                         Foreground="Gray"
+                         BorderBrush="#2A582F"
+                         CaretBrush="#2A582F"
+                         SelectionBrush="#2A582F"
+                         TextChanged="txtBuscar_TextChanged"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#2A582F" />
+            </Grid>
+        </Border>
+
+        <!--#endregion txtBuscar-->
+
+        <!--#region btnAgregar-->
+
+        <Border Grid.Row="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
+            <StackPanel>
+                <Button Name="btnAgregar"
+                        Content="Agregar"
+                        Height="35"
+                        Width="170"
+                        Background="#2A582F"
+                        BorderBrush="#2A582F"
+                        Foreground="White"
+                        FontSize="20"
+                        FontWeight="SemiBold"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="0 0 20 0"
+                        Click="btnAgregar_Click" />
+            </StackPanel>
+        </Border>
+
+
+        <!--#endregion btnAgregar-->
+
+
+    </Grid>
+</UserControl>
