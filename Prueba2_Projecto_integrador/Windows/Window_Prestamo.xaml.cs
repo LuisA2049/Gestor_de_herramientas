@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -60,6 +61,55 @@ namespace Prueba2_Projecto_integrador
 
         }
 
+        private string ObtenerFilasDelDataGrid(DataGrid dataGrid)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            // Recorremos cada fila del DataGrid
+            foreach (var item in dataGrid.Items)
+            {
+                string fila = ObtenerFilaComoCadena(item, dataGrid);
+
+                // Agregamos la fila al StringBuilder
+                stringBuilder.AppendLine(fila);
+            }
+
+            // Devolvemos la cadena resultante
+            return stringBuilder.ToString();
+        }
+
+        private string ObtenerFilaComoCadena(object item, DataGrid dataGrid)
+        {
+            StringBuilder filaBuilder = new StringBuilder();
+
+            // Recorremos cada columna de la fila
+            foreach (var column in dataGrid.Columns)
+            {
+                string valor = ObtenerValorCelda(item, column);
+
+                // Agregamos el valor al StringBuilder, separado por comas o el carácter que desees.
+                filaBuilder.Append(valor + ",");
+            }
+
+            // Eliminamos la última coma (si lo deseas) y devolvemos la fila como cadena.
+            if (filaBuilder.Length > 0)
+                filaBuilder.Length--; // Elimina el último carácter (la última coma)
+
+            return filaBuilder.ToString();
+        }
+
+        private string ObtenerValorCelda(object item, DataGridColumn column)
+        {
+            var cellContent = column.GetCellContent(item);
+            if (cellContent is TextBlock textBlock)
+            {
+                return textBlock.Text;
+            }
+
+            return string.Empty;
+        }
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -80,7 +130,7 @@ namespace Prueba2_Projecto_integrador
                     {
                         while (reader.Read())
                         {
-                            if (reader.GetString(0) == "0")
+                            if(reader.IsDBNull(0) || reader.GetString(0) == "0")
                             {
                                 txtNumero.Text = "1";
                             }
@@ -498,6 +548,9 @@ namespace Prueba2_Projecto_integrador
                            "('" + int.Parse(txtNumero.Text) + "', '" + StrFormatoFechaDpPrestamo + "', '" + StrFormatoFechaDpRetorno + "', '" + txtComentario.Text + "', '" + Usuario.IntIdUsuario + "', '" + int.Parse(txtNumControl.Text) + "');";
 
                             ComandosSQL.ComandoNonquery(comando);
+
+                            string StrHerramientasPrestatario = ObtenerFilasDelDataGrid(dgHerramientas_por_prestar);
+
 
                             this.Close();
                         }

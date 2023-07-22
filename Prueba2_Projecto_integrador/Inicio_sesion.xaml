@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="#f6f9f8"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow"
+        Title="Inicio de sesión"
         Height="500"
         Width="800"
         WindowStyle="None"

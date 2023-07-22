@@ -14,9 +14,10 @@
         Background="Transparent"
         AllowsTransparency="True"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Window_Usuario"
+        Title="Reporte: Usuario"
         Height="300"
         Width="500"
+        Name="Reporte"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
