@@ -45,6 +45,10 @@ El Gestor de Herramientas para Laboratorios utiliza MySQL como base de datos par
 
 ## Contribuciones
 
-¡Las contribuciones son bienvenidas!
+¡Las contribuciones son bienvenidas! Si deseas colaborar en el proyecto, por favor sigue los siguientes pasos:
 
-
+1. Realiza un fork del repositorio.
+2. Crea una rama para tus cambios: `git checkout -b feature/nueva_funcionalidad`
+3. Realiza tus modificaciones y haz commit de los cambios: `git commit -m "Agregada nueva funcionalidad"`
+4. Realiza un push a tu repositorio: `git push origin feature/nueva_funcionalidad`
+5. Crea un pull request en GitHub para que revisemos tus cambios.
